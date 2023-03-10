@@ -2,9 +2,9 @@
 
 namespace GenericApplicationLauncher.View
 {
-    public partial class AppLauncherView : UserControl
+    public partial class SteamLauncherView : UserControl
     {
-        public AppLauncherView()
+        public SteamLauncherView()
         {
             InitializeComponent();
         }

@@ -4,6 +4,18 @@ namespace GenericApplicationLauncher.Model
 {
     public static class SteamParameters
     {
+        public static Dictionary<string, HashSet<string>> Presets { get; } = new Dictionary<string, HashSet<string>>()
+        {
+            {"(Clear All)", new HashSet<string>(){}},
+            {"Team A Preset One", new HashSet<string>(){}},
+            {"Team A Preset Two", new HashSet<string>(){}},
+            {"Team B Preset One", new HashSet<string>(){}},
+            {"Team B Preset Two", new HashSet<string>(){}},
+            {"Team C Preset One", new HashSet<string>(){}},
+            {"Team C Preset Two", new HashSet<string>(){}},
+            {"Temporary Preset", new HashSet<string>(){}},
+        };
+
         public static Dictionary<string, string> SingleSteamParameters { get; } = new Dictionary<string, string>()
         {
             //{"applaunch <appID> [launch parameters]", "-applaunch <appID> [launch parameters]"},

@@ -2,7 +2,7 @@
 
 namespace GenericApplicationLauncher.Model.Types
 {
-    public class ParameterSelection
+    public class ParameterSelection : IParameterSelection
     {
         public ParameterSelection(List<Parameter> parameters)
         {

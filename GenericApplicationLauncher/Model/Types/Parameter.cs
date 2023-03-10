@@ -2,7 +2,7 @@
 
 namespace GenericApplicationLauncher.Model.Types
 {
-    public class Parameter
+    public class Parameter : IParameter
     {
         public Parameter(string label, string value)
         {
