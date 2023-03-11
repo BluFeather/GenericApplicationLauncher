@@ -11,78 +11,74 @@
     </UserControl.DataContext>
 
     <Grid>
-        <TabControl>
-            <TabItem Header="Steam">
-                <!--Presets Panel-->
-                <StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="Presets" FontWeight="Bold" FontSize="18"/>
-                        <ItemsControl ItemsSource="{Binding Presets}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Button Content="{Binding Label}" Margin="2.5"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="4"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </StackPanel>
-                   
-                    <!--Parameters Panel-->
-                    <StackPanel>
-                        <TextBlock Text="Parameters" FontWeight="Bold" FontSize="18"/>
-                        <ItemsControl ItemsSource="{Binding SingleParameters}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Content="{Binding Label}" Margin="2.5"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="4"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </StackPanel>
-                    
-                    <!---Dropdowns Panel-->
-                    <StackPanel>
-                        <TextBlock Text="Options" FontWeight="Bold" FontSize="18"/>
-                        <UniformGrid Columns="4">
-                            <ComboBox ItemsSource="{Binding LocaleOptions.ParameterLabels}" SelectedIndex="{Binding LocaleOptions.SelectedIndex}" Margin="2.5"/>
-                            <ComboBox ItemsSource="{Binding GenericOptionsOne.ParameterLabels}" SelectedIndex="{Binding GenericOptionsOne.SelectedIndex}" Margin="2.5"/>
-                            <ComboBox ItemsSource="{Binding GenericOptionsTwo.ParameterLabels}" SelectedIndex="{Binding GenericOptionsTwo.SelectedIndex}" Margin="2.5"/>
-                            <ComboBox ItemsSource="{Binding GenericOptionsThree.ParameterLabels}" SelectedIndex="{Binding GenericOptionsThree.SelectedIndex}" Margin="2.5"/>
-                        </UniformGrid>
-                    </StackPanel>
-                    
-                    <!--Custom Parameters Panel-->
-                    <StackPanel>
-                        <TextBlock Text="Custom" FontWeight="Bold" FontSize="18"/>
-                        <TextBox/>
-                    </StackPanel>
+        <!--Presets Panel-->
+        <StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="Presets" FontWeight="Bold" FontSize="18"/>
+                <ItemsControl ItemsSource="{Binding Presets}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Label}" Margin="2.5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
 
-                    <!--Launch Panel-->
-                    <StackPanel>
-                        <TextBlock Text="Launch" FontWeight="Bold" FontSize="18"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="3"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+            <!--Parameters Panel-->
+            <StackPanel Margin="5">
+                <TextBlock Text="Parameters" FontWeight="Bold" FontSize="18"/>
+                <ItemsControl ItemsSource="{Binding SingleParameters}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Label}" Margin="2.5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
 
-                            <TextBlock Text="Parameters:"/>
-                            <TextBox Grid.Column="2"/>
-                        </Grid>
-                        <Button Content="Launch Steam"/>
-                    </StackPanel>
-                    
-                </StackPanel>
-            </TabItem>
-        </TabControl>
+            <!---Dropdowns Panel-->
+            <StackPanel Margin="5">
+                <TextBlock Text="Options" FontWeight="Bold" FontSize="18"/>
+                <UniformGrid Columns="4">
+                    <ComboBox ItemsSource="{Binding LocaleOptions.ParameterLabels}" SelectedIndex="{Binding LocaleOptions.SelectedIndex}" Margin="2.5"/>
+                    <ComboBox ItemsSource="{Binding GenericOptionsOne.ParameterLabels}" SelectedIndex="{Binding GenericOptionsOne.SelectedIndex}" Margin="2.5"/>
+                    <ComboBox ItemsSource="{Binding GenericOptionsTwo.ParameterLabels}" SelectedIndex="{Binding GenericOptionsTwo.SelectedIndex}" Margin="2.5"/>
+                    <ComboBox ItemsSource="{Binding GenericOptionsThree.ParameterLabels}" SelectedIndex="{Binding GenericOptionsThree.SelectedIndex}" Margin="2.5"/>
+                </UniformGrid>
+            </StackPanel>
+
+            <!--Custom Parameters Panel-->
+            <StackPanel Margin="5">
+                <TextBlock Text="Custom" FontWeight="Bold" FontSize="18"/>
+                <TextBox Text="{Binding CustomProperty}"/>
+            </StackPanel>
+
+            <!--Launch Panel-->
+            <StackPanel Margin="5">
+                <TextBlock Text="Launch" FontWeight="Bold" FontSize="18"/>
+                <Grid Margin="0, 5, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="3"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Parameters:"/>
+                    <TextBlock Text="{Binding ArgumentsString}" Grid.Column="2"/>
+                </Grid>
+                <Button Content="Launch Steam" Margin="0, 5, 0, 0"/>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </UserControl>

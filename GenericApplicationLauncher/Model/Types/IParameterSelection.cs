@@ -9,5 +9,7 @@ namespace GenericApplicationLauncher.Model.Types
         public List<string> ParameterLabels { get; }
 
         public int SelectedIndex { get; set; }
+
+        public string Value { get; }
     }
 }

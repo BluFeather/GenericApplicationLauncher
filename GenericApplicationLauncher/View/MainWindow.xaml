@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenericApplicationLauncher.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800"
-        SizeToContent="WidthAndHeight"
+        Title="MainWindow" Height="500" Width="1000"
         ResizeMode="CanResizeWithGrip">
     <Grid>
-        <local:SteamLauncherView/>
+        <TabControl>
+            <TabItem Header="Steam">
+                <local:SteamLauncherView/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

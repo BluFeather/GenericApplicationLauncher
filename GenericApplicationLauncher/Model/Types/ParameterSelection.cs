@@ -25,5 +25,7 @@ namespace GenericApplicationLauncher.Model.Types
         }
 
         public int SelectedIndex { get; set; } = 0;
+
+        public string Value => Parameters[SelectedIndex].Value;
     }
 }

@@ -1,10 +1,12 @@
 ﻿using GenericApplicationLauncher.Model.Services;
 using GenericApplicationLauncher.Model.Types;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace GenericApplicationLauncher.View
 {
-    public class SteamLauncherViewModel
+    public class SteamLauncherViewModel : INotifyPropertyChanged
     {
         protected ISteamLauncher SteamLauncher { get; }
 
@@ -24,5 +26,24 @@ namespace GenericApplicationLauncher.View
         public IParameterSelection GenericOptionsTwo => SteamLauncher.GenericOptionsTwo;
 
         public IParameterSelection GenericOptionsThree => SteamLauncher.GenericOptionsThree;
+
+        public string CustomProperty
+        {
+            get => SteamLauncher.CustomParameter;
+            set
+            {
+                SteamLauncher.CustomParameter = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ArgumentsString { get => SteamLauncher.ArgumentsString; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

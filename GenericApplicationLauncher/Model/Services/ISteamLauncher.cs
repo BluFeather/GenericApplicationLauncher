@@ -17,5 +17,9 @@ namespace GenericApplicationLauncher.Model.Services
         IParameterSelection GenericOptionsTwo { get; }
 
         IParameterSelection GenericOptionsThree { get; }
+
+        string CustomParameter { get; set; }
+
+        string ArgumentsString { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using GenericApplicationLauncher.Model.Types;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace GenericApplicationLauncher.Model.Services
 {
@@ -14,8 +14,6 @@ namespace GenericApplicationLauncher.Model.Services
             GenericOptionsOne = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsOne));
             GenericOptionsTwo = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsTwo));
             GenericOptionsThree = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsThree));
-
-            Debug.WriteLine(Presets.Count);
         }
 
         public ObservableCollection<IPreset> Presets { get; }
@@ -29,5 +27,32 @@ namespace GenericApplicationLauncher.Model.Services
         public IParameterSelection GenericOptionsTwo { get; }
 
         public IParameterSelection GenericOptionsThree { get; }
+
+        public string CustomParameter { get; set; } = string.Empty;
+
+        public string ArgumentsString
+        {
+            get
+            {
+                HashSet<string> args = new HashSet<string>();
+
+                foreach (var parameter in SingleParameters)
+                {
+                    if (parameter.IsEnabled)
+                    {
+                        args.Add(parameter.Value);
+                    }
+                }
+
+                args.Add(LocaleOptions.Value);
+                args.Add(GenericOptionsOne.Value);
+                args.Add(GenericOptionsTwo.Value);
+                args.Add(GenericOptionsThree.Value);
+
+                args.Remove(string.Empty);
+
+                return string.Join(" ", args);
+            }
+        }
     }
 }
