@@ -14,7 +14,7 @@ namespace GenericApplicationLauncher.Model.Types
 
         public string Value { get; }
 
-        public bool IsEnabled { get; } = false;
+        public bool IsEnabled { get; set; } = false;
 
         public static List<Parameter> GenerateParameterList(Dictionary<string, string> parameterDictionary)
         {

@@ -6,6 +6,6 @@
 
         public string Value { get; }
 
-        public bool IsEnabled { get; }
+        public bool IsEnabled { get; set; }
     }
 }

@@ -48,6 +48,7 @@ namespace GenericApplicationLauncher.Model.Services
                 args.Add(GenericOptionsOne.Value);
                 args.Add(GenericOptionsTwo.Value);
                 args.Add(GenericOptionsThree.Value);
+                args.Add(CustomParameter);
 
                 args.Remove(string.Empty);
 

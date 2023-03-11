@@ -35,7 +35,7 @@
                 <ItemsControl ItemsSource="{Binding SingleParameters}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Label}" Margin="2.5"/>
+                            <CheckBox Content="{Binding Label}" IsChecked="{Binding IsEnabled}" Margin="2.5"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>
