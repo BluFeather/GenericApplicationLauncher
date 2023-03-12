@@ -11,11 +11,12 @@ namespace GenericApplicationLauncher.View
     {
         protected ISteamLauncher SteamLauncher { get; }
 
-        private Timer _refreshTimer = new Timer(250);
+        private Timer _refreshTimer = new Timer(50);
 
         private void RefreshView(object? sender, ElapsedEventArgs e)
         {
             OnPropertyChanged("ArgumentsString");
+            OnPropertyChanged("CustomParameter");
         }
 
         public SteamLauncherViewModel()
@@ -37,7 +38,7 @@ namespace GenericApplicationLauncher.View
 
         public IParameterSelection GenericOptionsThree => SteamLauncher.GenericOptionsThree;
 
-        public string CustomProperty
+        public string CustomParameter
         {
             get => SteamLauncher.CustomParameter;
             set

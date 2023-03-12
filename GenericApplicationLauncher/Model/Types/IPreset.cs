@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GenericApplicationLauncher.View;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace GenericApplicationLauncher.Model.Types
 {
@@ -7,5 +9,7 @@ namespace GenericApplicationLauncher.Model.Types
         public string Label { get; }
 
         public HashSet<string> ParametersToToggle { get; }
+
+        public ICommand PresetCommand { get; }
     }
 }

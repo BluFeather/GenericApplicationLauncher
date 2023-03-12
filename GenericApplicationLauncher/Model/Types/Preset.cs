@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using GenericApplicationLauncher.View;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Input;
 
 namespace GenericApplicationLauncher.Model.Types
 {
@@ -8,20 +12,32 @@ namespace GenericApplicationLauncher.Model.Types
         {
             this.Label = label;
             ParametersToToggle = parametersToToggle;
+            PresetCommand = new RelayCommand(PresetCommandInvoked);
         }
 
         public string Label { get; }
 
         public HashSet<string> ParametersToToggle { get; }
 
-        public static List<Preset> GeneratePresetList(Dictionary<string, HashSet<string>> presetDictionary)
+        public static List<Preset> GeneratePresetList(Dictionary<string, HashSet<string>> presetDictionary, EventHandler<Preset> OnPresetClicked)
         {
             List<Preset> list = new List<Preset>();
             foreach (var kvp in presetDictionary)
             {
-                list.Add(new Preset(kvp.Key, kvp.Value));
+                var preset = new Preset(kvp.Key, kvp.Value);
+                preset.PresetClicked += OnPresetClicked;
+                list.Add(preset);
             }
             return list;
+        }
+
+        public ICommand PresetCommand { get; }
+
+        public event EventHandler<Preset> PresetClicked;
+
+        private void PresetCommandInvoked()
+        {
+            PresetClicked?.Invoke(this, this);
         }
     }
 }

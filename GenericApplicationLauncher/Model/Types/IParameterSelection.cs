@@ -11,5 +11,7 @@ namespace GenericApplicationLauncher.Model.Types
         public int SelectedIndex { get; set; }
 
         public string Value { get; }
+
+        public bool TryApplyPreset(Preset preset);
     }
 }

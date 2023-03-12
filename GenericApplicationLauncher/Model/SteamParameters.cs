@@ -6,14 +6,13 @@ namespace GenericApplicationLauncher.Model
     {
         public static Dictionary<string, HashSet<string>> Presets { get; } = new Dictionary<string, HashSet<string>>()
         {
+            {"Team A Preset One", new HashSet<string>(){"dev", "debug_steamapi"}},
+            {"Team B Preset One", new HashSet<string>(){"gamepadui", "debug_steamapi", "Option 1"}},
+            {"Team C Preset One", new HashSet<string>(){"Condition Four", "-typee"}},
             {"(Clear All)", new HashSet<string>(){}},
-            {"Team A Preset One", new HashSet<string>(){}},
-            {"Team A Preset Two", new HashSet<string>(){}},
-            {"Team B Preset One", new HashSet<string>(){}},
-            {"Team B Preset Two", new HashSet<string>(){}},
-            {"Team C Preset One", new HashSet<string>(){}},
-            {"Team C Preset Two", new HashSet<string>(){}},
-            {"Temporary Preset", new HashSet<string>(){}},
+            {"Team A Preset Two", new HashSet<string>(){"dev", "debug_steamapi", "console", "Option C"}},
+            {"Team B Preset Two", new HashSet<string>(){"debug_steamapi", "Option 2"}},
+            {"Team C Preset Two", new HashSet<string>(){"-typee", "nocache"}},
         };
 
         public static Dictionary<string, string> SingleSteamParameters { get; } = new Dictionary<string, string>()

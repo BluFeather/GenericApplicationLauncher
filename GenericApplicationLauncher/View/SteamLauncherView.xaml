@@ -18,7 +18,7 @@
                 <ItemsControl ItemsSource="{Binding Presets}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding Label}" Margin="2.5"/>
+                            <Button Content="{Binding Label}" Command="{Binding PresetCommand}" Margin="2.5"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>
@@ -60,7 +60,7 @@
             <!--Custom Parameters Panel-->
             <StackPanel Margin="5">
                 <TextBlock Text="Custom" FontWeight="Bold" FontSize="18"/>
-                <TextBox Text="{Binding CustomProperty, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding CustomParameter, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <!--Launch Panel-->

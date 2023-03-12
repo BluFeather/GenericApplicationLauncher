@@ -1,4 +1,5 @@
 ﻿using GenericApplicationLauncher.Model.Types;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -8,12 +9,25 @@ namespace GenericApplicationLauncher.Model.Services
     {
         public SteamLauncher()
         {
-            Presets = new ObservableCollection<IPreset>(Preset.GeneratePresetList(SteamParameters.Presets));
+            Presets = new ObservableCollection<IPreset>(Preset.GeneratePresetList(SteamParameters.Presets, PresetClicked));
             SingleParameters = new ObservableCollection<IParameter>(Parameter.GenerateParameterList(SteamParameters.SingleSteamParameters));
             LocaleOptions = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.LocaleOptions));
             GenericOptionsOne = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsOne));
             GenericOptionsTwo = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsTwo));
             GenericOptionsThree = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsThree));
+        }
+
+        private void PresetClicked(object? sender, Preset preset)
+        {
+            foreach (var parameter in SingleParameters)
+            {
+                parameter.TryApplyPreset(preset);
+            }
+            LocaleOptions.TryApplyPreset(preset);
+            GenericOptionsOne.TryApplyPreset(preset);
+            GenericOptionsTwo.TryApplyPreset(preset);
+            GenericOptionsThree.TryApplyPreset(preset);
+            CustomParameter = string.Empty;
         }
 
         public ObservableCollection<IPreset> Presets { get; }

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace GenericApplicationLauncher.Model.Types
 {
-    public class ParameterSelection : IParameterSelection
+    public class ParameterSelection : IParameterSelection, INotifyPropertyChanged
     {
         public ParameterSelection(List<Parameter> parameters)
         {
@@ -24,8 +26,37 @@ namespace GenericApplicationLauncher.Model.Types
             }
         }
 
-        public int SelectedIndex { get; set; } = 0;
-
+        private int selectedIndex = 0;
+        public int SelectedIndex
+        {
+            get => selectedIndex;
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged();
+            }
+        }
         public string Value => Parameters[SelectedIndex].Value;
+
+        public bool TryApplyPreset(Preset preset)
+        {
+            foreach (var parameter in Parameters)
+            {
+                if (parameter.TryApplyPreset(preset))
+                {
+                    SelectedIndex = Parameters.IndexOf(parameter);
+                    return true;
+                }
+            }
+            SelectedIndex = 0;
+            return false;
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
