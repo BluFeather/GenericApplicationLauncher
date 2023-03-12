@@ -36,6 +36,7 @@ namespace GenericApplicationLauncher.Model.Types
                 OnPropertyChanged();
             }
         }
+
         public string Value => Parameters[SelectedIndex].Value;
 
         public bool TryApplyPreset(Preset preset)

@@ -7,7 +7,7 @@ namespace GenericApplicationLauncher.Model
         public static Dictionary<string, HashSet<string>> Presets { get; } = new Dictionary<string, HashSet<string>>()
         {
             {"Team A Preset One", new HashSet<string>(){"dev", "debug_steamapi"}},
-            {"Team B Preset One", new HashSet<string>(){"gamepadui", "debug_steamapi", "Option 1"}},
+            {"Team B Preset One", new HashSet<string>(){"gamepadui", "Swedish"}},
             {"Team C Preset One", new HashSet<string>(){"Condition Four", "-typee"}},
             {"(Clear All)", new HashSet<string>(){}},
             {"Team A Preset Two", new HashSet<string>(){"dev", "debug_steamapi", "console", "Option C"}},
@@ -17,7 +17,6 @@ namespace GenericApplicationLauncher.Model
 
         public static Dictionary<string, string> SingleSteamParameters { get; } = new Dictionary<string, string>()
         {
-            //{"applaunch <appID> [launch parameters]", "-applaunch <appID> [launch parameters]"},
             {"cafeapplaunch", "-cafeapplaunch"},
             {"clearbeta", "-clearbeta"},
             {"complete_install_via_http", "-complete_install_via_http"},
@@ -30,10 +29,7 @@ namespace GenericApplicationLauncher.Model
             {"fs_logbins", "-fs_logbins"},
             {"forceservice", "-forceservice"},
             {"gameoverlayinject", "-gameoverlayinject"},
-            //{"install <path>", "-install <path>"},
             {"installer_test", "-installer_test"},
-            //{"language <language>", "-language <language>"},
-            //{"login <[username]|anonymous> [password]", "-login <[username]|anonymous> [password]"},
             {"lognetapi", "-lognetapi"},
             {"log_voice", "-log_voice"},
             {"noasync", "-noasync"},
@@ -43,7 +39,6 @@ namespace GenericApplicationLauncher.Model
             {"no-browser", "-no-browser"},
             {"no-dwrite", "-no-dwrite"},
             {"oldbigpicture", "-oldbigpicture"},
-            //{"script <file name>", "-script <file name>"},
             {"shutdown", "-shutdown"},
             {"silent", "-silent"},
             {"single_core", "-single_core"},

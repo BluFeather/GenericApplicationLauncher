@@ -1,7 +1,6 @@
 ﻿using GenericApplicationLauncher.View;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace GenericApplicationLauncher.Model.Types
@@ -10,7 +9,7 @@ namespace GenericApplicationLauncher.Model.Types
     {
         public Preset(string label, HashSet<string> parametersToToggle)
         {
-            this.Label = label;
+            Label = label;
             ParametersToToggle = parametersToToggle;
             PresetCommand = new RelayCommand(PresetCommandInvoked);
         }
@@ -33,7 +32,7 @@ namespace GenericApplicationLauncher.Model.Types
 
         public ICommand PresetCommand { get; }
 
-        public event EventHandler<Preset> PresetClicked;
+        public event EventHandler<Preset> PresetClicked = delegate { };
 
         private void PresetCommandInvoked()
         {

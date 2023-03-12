@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Timers;
+using System.Windows.Input;
 
 namespace GenericApplicationLauncher.View
 {
@@ -24,7 +25,15 @@ namespace GenericApplicationLauncher.View
             SteamLauncher = new SteamLauncher();
             _refreshTimer.Elapsed += RefreshView;
             _refreshTimer.Start();
+            LaunchSteamCommand = new RelayCommand(LaunchSteam);
         }
+
+        private void LaunchSteam()
+        {
+            SteamLauncher.TryLaunchSteam();
+        }
+
+        public ICommand LaunchSteamCommand { get; }
 
         public ObservableCollection<IPreset> Presets => SteamLauncher.Presets;
 

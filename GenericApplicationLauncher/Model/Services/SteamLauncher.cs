@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
+using System.Windows;
 
 namespace GenericApplicationLauncher.Model.Services
 {
@@ -15,6 +18,7 @@ namespace GenericApplicationLauncher.Model.Services
             GenericOptionsOne = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsOne));
             GenericOptionsTwo = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsTwo));
             GenericOptionsThree = new ParameterSelection(Parameter.GenerateParameterList(SteamParameters.GenericOptionsThree));
+            SteamExecutable = new FileInfo(Path.Combine(@"C:\Program Files (x86)\Steam\steam.exe"));
         }
 
         private void PresetClicked(object? sender, Preset preset)
@@ -68,6 +72,36 @@ namespace GenericApplicationLauncher.Model.Services
 
                 return string.Join(" ", args);
             }
+        }
+
+        public FileInfo SteamExecutable { get; }
+
+        private void KillSteamProcess()
+        {
+            foreach (Process process in Process.GetProcessesByName("steam"))
+            {
+                process.Kill();
+            }
+        }
+
+        public bool TryLaunchSteam()
+        {
+            if (!SteamExecutable.Exists) return false;
+
+            KillSteamProcess();
+            Process steamProcess = new Process();
+            steamProcess.StartInfo.FileName = SteamExecutable.FullName;
+            steamProcess.StartInfo.Arguments = ArgumentsString;
+            try
+            {
+                steamProcess.Start();
+                return true;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"Steam.exe failed to start! Maybe the following exception message can help determine why:\n{e.Message}", "Error Starting Steam!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return false;
         }
     }
 }

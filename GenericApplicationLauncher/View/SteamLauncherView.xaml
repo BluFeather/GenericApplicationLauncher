@@ -76,7 +76,8 @@
                     <TextBlock Text="Parameters:"/>
                     <TextBlock Text="{Binding ArgumentsString}" Grid.Column="2"/>
                 </Grid>
-                <Button Content="Launch Steam" Margin="0, 5, 0, 0"/>
+                <Button Content="Launch Steam" Margin="0, 5, 0, 0"
+                        Command="{Binding LaunchSteamCommand}"/>
             </StackPanel>
 
         </StackPanel>

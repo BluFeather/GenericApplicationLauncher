@@ -21,5 +21,7 @@ namespace GenericApplicationLauncher.Model.Services
         string CustomParameter { get; set; }
 
         string ArgumentsString { get; }
+
+        bool TryLaunchSteam();
     }
 }
