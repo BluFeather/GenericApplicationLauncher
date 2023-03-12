@@ -60,7 +60,7 @@
             <!--Custom Parameters Panel-->
             <StackPanel Margin="5">
                 <TextBlock Text="Custom" FontWeight="Bold" FontSize="18"/>
-                <TextBox Text="{Binding CustomProperty}"/>
+                <TextBox Text="{Binding CustomProperty, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <!--Launch Panel-->

@@ -1,11 +1,9 @@
 ﻿using GenericApplicationLauncher.Model.Services;
 using GenericApplicationLauncher.Model.Types;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Timers;
-using System.Windows.Input;
 
 namespace GenericApplicationLauncher.View
 {
